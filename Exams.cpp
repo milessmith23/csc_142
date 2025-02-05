@@ -3,7 +3,7 @@
 // This file asks what your name is and to put in your test scores and it will find the average of your three test score.
 // Exams.cpp
 
-// Comment made by Wwilfredo 
+ 
 
 #include <iostream>
 #include <iomanip> 
