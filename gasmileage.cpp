@@ -1,3 +1,8 @@
+// Miles Smith
+// 1/24/25
+// This program will calculate the gas mileage you have driven in your car.
+// gasmileage.cpp
+
 #include <iostream>
 
 int main() {   
