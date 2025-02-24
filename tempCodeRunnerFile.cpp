@@ -1,26 +1,44 @@
 #include <iostream>
 
+using namespace std;
 
 
-bool isEven(int num) {
-    return num % 2 == 0;
+bool isPrime(int num) {
+    if (num <= 1) return false;
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) return false;
+    }
+    return true;
+}
+
+
+double factorial(int num) {
+    double fact = 1;
+    for (int i = 1; i <= num; i++) {
+        fact *= i;
+    }
+    return fact;
 }
 
 int main() {
-    std::srand(std::time(0)); 
-    int evenCount = 0, oddCount = 0;
+    srand(time(0));  
+    char repeat;
 
-    
-    for (int i = 0; i < 1000; ++i) {
-        int num = std::rand() % 101; 
-        if (isEven(num)) evenCount++;
-        else oddCount++;
-    }
+    do {
+        int num = rand() % 50;  
+        cout << "Random generated number: " << num << endl;
 
-   
-    std::cout << "Total numbers: 1000\n";
-    std::cout << "Even numbers: " << evenCount << "\n";
-    std::cout << "Odd numbers: " << oddCount << "\n";
+        if (isPrime(num)) {
+            cout << "This is prime. The factorial of " << num << " is " << factorial(num) << endl;
+        } else {
+            cout << "This is not prime." << endl;
+        }
 
+        cout << "Do you want to repeat? (y/n): ";
+        cin >> repeat;
+
+    } while (repeat == 'y' || repeat == 'Y');
+
+    cout << "Goodbye!" << endl;
     return 0;
 }
