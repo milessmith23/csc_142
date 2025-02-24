@@ -9,7 +9,7 @@ bool isEven(int num) {
 int main() {
     std::srand(std::time(0)); 
     int evenCount = 0, oddCount = 0;
-
+    int totalNumbers = 1000;
     
     for (int i = 0; i < 1000; ++i) {
         int num = std::rand() % 101; 
@@ -17,9 +17,6 @@ int main() {
         else oddCount++;
     }
 
-    int totalNumbers = 1000;
-    int evenCount = 0;
-    int oddCount = 0;
 
    
     std::cout << "Total numbers: 1000\n";

@@ -1,44 +1,104 @@
+#ifndef RECTANGLE_H
+#define RECTANGLE_H
+#include "Rectangle.h"
+
+class Rectangle {
+private:
+    double length;  
+    double width;   
+public:
+    
+    Rectangle(double len = 0, double wid = 0);
+
+   
+    double getLength() const;
+    double getWidth() const;
+
+    
+    void setLength(double len);
+    void setWidth(double wid);
+
+    
+    double getArea() const;
+};
+
+
+
+#include "Rectangle.h"
+
+
+Rectangle::Rectangle(double len, double wid) : length(len), width(wid) {}
+
+
+double Rectangle::getLength() const {
+    return length;
+}
+
+
+double Rectangle::getWidth() const {
+    return width;
+}
+
+
+void Rectangle::setLength(double len) {
+    length = len;
+}
+
+
+void Rectangle::setWidth(double wid) {
+    width = wid;
+}
+
+
+double Rectangle::getArea() const {
+    return length * width;
+}
+
 #include <iostream>
-
-using namespace std;
-
-
-bool isPrime(int num) {
-    if (num <= 1) return false;
-    for (int i = 2; i * i <= num; i++) {
-        if (num % i == 0) return false;
-    }
-    return true;
-}
-
-
-double factorial(int num) {
-    double fact = 1;
-    for (int i = 1; i <= num; i++) {
-        fact *= i;
-    }
-    return fact;
-}
+#include "Rectangle.h"
 
 int main() {
-    srand(time(0));  
-    char repeat;
+    
+    Rectangle kitchen, bedroom, livingRoom;
 
-    do {
-        int num = rand() % 50;  
-        cout << "Random generated number: " << num << endl;
+    
+    double length, width;
 
-        if (isPrime(num)) {
-            cout << "This is prime. The factorial of " << num << " is " << factorial(num) << endl;
-        } else {
-            cout << "This is not prime." << endl;
-        }
+    
+    std::cout << "Enter the length of the kitchen: ";
+    std::cin >> length;
+    std::cout << "Enter the width of the kitchen: ";
+    std::cin >> width;
+    kitchen.setLength(length);
+    kitchen.setWidth(width);
 
-        cout << "Do you want to repeat? (y/n): ";
-        cin >> repeat;
+    
+    std::cout << "Enter the length of the bedroom: ";
+    std::cin >> length;
+    std::cout << "Enter the width of the bedroom: ";
+    std::cin >> width;
+    bedroom.setLength(length);
+    bedroom.setWidth(width);
 
-    } while (repeat == 'y' || repeat == 'Y');
+    
+    std::cout << "Enter the length of the living room: ";
+    std::cin >> length;
+    std::cout << "Enter the width of the living room: ";
+    std::cin >> width;
+    livingRoom.setLength(length);
+    livingRoom.setWidth(width);
 
-    cout << "Goodbye!" << endl;
+    
+    std::cout << "\nKitchen dimensions: " << kitchen.getLength() << " x " << kitchen.getWidth()
+              << " | Area: " << kitchen.getArea() << " sq units\n";
+    std::cout << "Bedroom dimensions: " << bedroom.getLength() << " x " << bedroom.getWidth()
+              << " | Area: " << bedroom.getArea() << " sq units\n";
+    std::cout << "Living Room dimensions: " << livingRoom.getLength() << " x " << livingRoom.getWidth()
+              << " | Area: " << livingRoom.getArea() << " sq units\n";
+
+    
+    double totalArea = kitchen.getArea() + bedroom.getArea() + livingRoom.getArea();
+    std::cout << "\nTotal area of the apartment: " << totalArea << " sq units\n";
+
     return 0;
 }
